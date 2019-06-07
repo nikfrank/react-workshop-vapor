@@ -1,0 +1,207 @@
+.About-Page {
+  .About-Gallery-Section {
+    background-color: #D9CAB3;
+  }
+  
+  .spacer {
+    height: 5vw;
+  }
+
+  .grid li {
+    padding: 15px;
+    height: 350px;
+    width: 350px;
+    border-radius: 3px;
+    background-clip: content-box;
+    background-size: cover;
+    background-position: center;
+    background-color: #333;
+  }
+
+  .grid li.large {
+    height: 500px;
+    width: 500px;
+  }
+
+  .grid li.small {
+    flex-basis: 30%;
+  }
+  .grid li.large {
+    flex-basis: 45%;
+  }
+
+  .Gallery-Blurb {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 65vw;
+    border-bottom: 1px solid #51504c;
+    margin: 0 auto;
+  }
+  .Gallery-Blurb p {
+    max-width: 60vw;
+    margin: 0 auto;
+    font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 1000px) {
+    .grid li.small,
+    .our-work .grid li.large {
+      flex-basis: 100%;
+    }
+  }
+
+
+
+  /*about page*/
+  .About-Staff-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #b2a693;
+  }
+
+  .Staff-Header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    padding: 15px;
+    font-size: 1.5em;
+  }
+
+  .Staff-Bios {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Staff-Card {
+    background-color: #d9cab3;
+    border: 1px solid #60574a;
+    box-shadow: 3px 3px 3px #635c52;
+    color: #60574a;
+    width: 55vw;
+    margin: 1.5vw;
+    border-radius: 10px;
+  }
+
+  .Staff-Card h3 {
+    margin-bottom: 8px;
+  }
+  .Staff-Card h3 span {
+    padding: 1px 5px;
+    border-radius: 5px;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .Staff-Card div:first-child {
+    float: left;
+  }
+
+  .Staff-Card div:first-child div {
+    padding: 12px;
+    height: 25vw;
+    width: 20vw;
+    border-radius: 7px;
+    margin: 1vw;
+    box-shadow: 3px 3px 6px grey;
+    background-size: cover;
+  }
+
+  .Staff-Card h2 {
+    display: block;
+    float: right;
+    width: 29vw;
+    text-align: left;
+    margin: 1.25vw 0;
+    padding-left: 2vw;
+    white-space: nowrap;
+  }
+
+
+  .Staff-Card p {
+    margin: 0.5vw 5%;
+  }
+
+  @media( min-width: 860px ){
+    .Staff-Card h2 {
+      width: 32vw;
+      padding: 0;
+      text-align: center;
+    }
+
+    .Staff-Card p {
+      margin: 0.5vw 12% 0.5vw 50%;
+    }
+  }
+
+  @media( max-width: 560px ){
+    .Staff-Card h2 {
+      font-size: 0.875em;
+      padding: 0;
+      width: 27vw;
+    }
+
+    .Staff-Card h3 {
+      font-size: 1em;
+
+    }
+  }
+
+  .pageBottom > div:first-child {
+    background-size: cover;
+  }
+
+  .celebs {
+    padding-bottom: 20px;
+  }
+
+  .more-info-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 10%;
+    padding-bottom: 20px;
+  }
+
+  .location,
+  .parking,
+  .policy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .map {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+
+    margin-bottom: 20px;
+    padding-top: 50%;
+    background-size: cover;
+  }
+
+  @media (max-width: 600px) {
+    .more-info-container {
+      flex-direction: column;
+    }
+    .map,
+    .parking,
+    .policy {
+      width: 80%;
+    }
+    .map {
+      background-position: 0 -60px;
+    }
+  }
+
+}
