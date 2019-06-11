@@ -1,0 +1,37 @@
+.Home-Page {
+  .pageTopper {
+    display: flex;
+  }
+
+  .Home-Gallery {
+    background-color: #D9CAB3;
+  }
+
+  .contact {
+    background-color: #b2a693;
+  }
+
+    .grid li {
+    padding: 15px;
+    height: 350px;
+    width: 350px;
+    border-radius: 3px;
+    background-clip: content-box;
+    background-size: cover;
+    background-position: center;
+    background-color: #333;
+  }
+
+  .grid li.large {
+    height: 500px;
+    width: 500px;
+  }
+
+  .grid li.small {
+    flex-basis: 30%;
+  }
+  .grid li.large {
+    flex-basis: 45%;
+  }
+
+}

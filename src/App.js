@@ -12,21 +12,23 @@ import './App.scss';
 import Navbar from './Navbar';
 import Home from './Home';
 import Menu from './Menu';
-import Order for './Order';
+import Order from './Order';
 
 export default ()=> (
   <Router>
-    <Navbar />
+    <>
+      <Navbar />
 
-    <Switch>
-      <Route exact path='/home' component={Home} />
-      <Route exact path='/menu' component={Menu} />
+      <Switch>
+        <Route exact path='/home' component={Home} />
+        <Route exact path='/menu' component={Menu} />
 
-      <Route exact path='/order' component={Order} />
-      <Redirect from='/' to='/home' />
-    </Switch>
+        <Route exact path='/order' component={Order} />
+        <Redirect from='/' to='/home' />
+      </Switch>
 
-    <footer>
-    </footer>
+      <footer>
+      </footer>
+    </>
   </Router>
 );

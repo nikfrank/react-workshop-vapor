@@ -1,0 +1,127 @@
+.Menu-page  {
+
+  .menu-back-border {
+    background-color:white;
+    background-image:
+      radial-gradient(midnightblue 9px, transparent 10px),        
+      repeating-radial-gradient(midnightblue 0, midnightblue 4px, transparent 5px, transparent 20px, midnightblue 21px, midnightblue 25px, transparent 26px, transparent 50px);    
+    background-size: 30px 30px, 90px 90px; 
+    background-position: 0 0;
+  }
+
+  .menu-pages {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  section {
+    padding-top: 20px;
+
+    background: radial-gradient(rgb(138,0,0) 4%, rgb(92,0,0) 9%, rgba(102,0,0,0) 9%), radial-gradient(rgb(138,0,0) 4%, rgb(92,0,0) 8%, rgba(102,0,0,0) 10%), radial-gradient(rgba(153,0,0,0.8) 20%, rgba(102,0,0,0) 100%), radial-gradient(rgba(153,0,0,0.8) 20%, rgba(102,0,0,0) 100%), radial-gradient(rgb(102,0,0) 35%, rgba(102,0,0,0) 60%), radial-gradient(rgb(102,0,0) 35%, rgba(102,0,0,0) 60%), radial-gradient(rgba(76,0,0,0.701961) 0, rgba(102,0,0,0) 100%), radial-gradient(rgba(76,0,0,0.701961) 0, rgba(102,0,0,0) 100%), linear-gradient(45deg, rgba(102,0,0,0) 49%, rgb(0,0,0) 50%, rgba(102,0,0,0) 70%), linear-gradient(-45deg, rgba(102,0,0,0) 49%, rgb(0,0,0) 50%, rgba(102,0,0,0) 70%), rgb(51, 0, 0);
+
+    background-position: 0 0, 50px 50px, 50px 0, 0 50px, 50px 0, 100px 50px, 0 0, 50px 50px, 0 0, 0 0;
+    
+    background-size: 100px 100px;
+    position: relative;
+  }
+
+  .menu-paper {
+    background-repeat: none;
+    background-size: 100% 100%;
+
+    font-weight: 800;
+    font-size: 2em;
+    
+    padding: 80px 15px 10px;
+    
+    height: 80vh;
+    width: 400px;
+    max-width: 90vw;
+    margin: 0 auto 15px;
+
+    position: relative;
+  }
+
+  .menu-paper .lang-toggle {
+    color: gold;
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    cursor: pointer;
+
+    background-color: #333;
+    border-radius: 9px;
+    padding: 0 4px 4px;
+  }
+
+
+  .menu-paper .menu-item {
+    margin-bottom: 8px;
+    cursor: zoom-in;
+
+    display: flex;
+    flex-direction: row;
+  }
+
+  .menu-paper .menu-item.he {
+    flex-direction: row-reverse;
+  }
+
+
+  .menu-paper .menu-item span:nth-child(2) {
+    flex-grow: 1;
+    height: 1.25em;
+    border-bottom: 2px dotted #60574a;
+    padding: 0 2px;
+  }
+
+  .menu-paper .menu-item {
+    padding: 0 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+  }
+
+  .fodal {
+    position: fixed;
+    top: 5vh;
+    left: 2vw;
+    width: 96vw;
+    overflow: hidden;
+
+    z-index: 10;
+
+    background-color: #ffd;
+    border: 2px solid #442;
+
+    animation: slideOpen 0.7s forwards;
+
+    cursor: zoom-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fodal.closing {
+    animation: slideClose 0.7s forwards;
+  }
+
+  @keyframes slideOpen {
+    from { height: 0; }
+    to { height: 90vh; }
+  }
+
+  @keyframes slideClose {
+    from { height: 90vh; }
+    to { height: 0; }
+  }
+
+  .fodal img {
+    max-width: 80vw;
+    height: auto;
+  }
+}

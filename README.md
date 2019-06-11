@@ -116,22 +116,31 @@ const Order = ()=> (<div>Order</div>);
 
 export default ()=> (
   <Router>
-    <Navbar />
+    <>
+      <Navbar />
 
-    <Switch>
-      <Route exact path='/home' component={Home} />
-      <Route exact path='/menu' component={Menu} />
+      <Switch>
+        <Route exact path='/home' component={Home} />
+        <Route exact path='/menu' component={Menu} />
 
-      <Route exact path='/order' component={Order} />
-      <Redirect from='/' to='/home' />
-    </Switch>
+        <Route exact path='/order' component={Order} />
+        <Redirect from='/' to='/home' />
+      </Switch>
 
-    <footer />
+      <footer />
+    </>
   </Router>
 );
 ```
 
 we can test already that the url `localhost:3000/home` will render our `Home` Component, likewise for the other two.
+
+
+the `<> ... </>` empty tags are used as a workaround for `<Router>...</Router>` who needs to have ONLY ONE child element.
+
+empty tags are a single JSX which doesn't render any DOM elements, which makes it useful for this purpose (just containing stuff).
+
+---
 
 Before we go any further, we should make seperate files for each of the four Components we just made
 
@@ -150,9 +159,9 @@ export default Navbar;
 
 (likewise for the other three)
 
-<sub>./src/App.js</sub>
 where we had
 
+<sub>./src/App.js</sub>
 ```js
 //...
 
@@ -173,7 +182,7 @@ we can now write
 import Navbar from './Navbar';
 import Home from './Home';
 import Menu from './Menu';
-import Order for './Order';
+import Order from './Order';
 
 //...
 ```
@@ -184,6 +193,8 @@ we can also take the time now to make SCSS files for each of them
 `$ touch src/Navbar.scss src/Home.scss src/Menu.scss src/Order.scss`
 
 
+and in each of the Component files, we can import the .scss files
+
 <sub>./src/Navbar.js</sub>
 ```js
 //...
@@ -193,13 +204,136 @@ import './Navbar.scss';
 //...
 ```
 
+and for while we style the navbar and footer, let's set the pages to be full-screen sized
+
+
+<sub>./src/Home.js</sub>
+```js
+//...
+
+import './Home.scss';
+
+const Home = ()=> (<div className='Home'>Home</div>);
+```
+
+<sub>./src/Home.scs</sub>
+```scss
+.Home {
+  height: 100vh;
+}
+```
+
 
 ### make a navbar, style it as colored glass, slide it smaller on scroll
-#### Links
 
 Now is time to fill in the  `<Navbar/>` and `<footer/>`.
 
 
+#### Links
+
+First thing's first: let's put some nav links into our `Navbar`
+
+we'll use [react-router-dom's Link Component](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md)
+
+<sub>./src/Navbar.js</sub>
+```js
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import './Navbar.scss';
+
+const Navbar = ()=> (
+  <div className='Navbar'>
+    <h1>Vapor Lounge</h1>
+    <ul className='nav-links'>
+      <li>
+        <Link to='/home'>Home</Link>
+      </li>
+      <li>
+        <Link to='/menu'>Menu</Link>
+      </li>
+      <li>
+        <Link to='/order'>Order</Link>
+      </li>
+    </ul>
+  </div>
+);
+
+export default Navbar;
+```
+
+and make them sit side-by-side over on the right side of the bar
+
+<sub>./src/Navbar.scss</sub>
+```scss
+.Navbar {
+  position: fixed;
+  top: 0;
+  
+  width: 100%;
+  min-height: 80px;
+  
+  background-image: linear-gradient(
+    to bottom,
+    rgba(156, 21, 219, 0.75),
+    rgba(56, 31, 72, 0.25)
+  );
+
+  display: flex;
+  flex-direction: row;
+
+  h1 {
+    color: #fffa;
+    padding: 10px 0 10px 20px;
+    flex-grow: 5;
+  }
+
+  ul.nav-links {
+    list-style: none;
+    padding: 13px 0 0 0;
+    
+    flex-grow: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    a {
+      color: white;
+      font-size: 1.25rem;
+      text-decoration: none;
+
+      &:hover {
+        color: #fffa;
+      }
+
+    }
+
+    li {
+      flex-grow: 1;
+      text-align: center;
+      padding-top: 10px;
+    }
+  }
+}
+```
+
+
+
+#### footer
+
+<sub>./src/App.scss</sub>
+```scss
+
+footer {
+  height: 180px;
+  background-color: black;
+  background-image: linear-gradient(
+    to top,
+    rgba(156, 21, 219, 0.75),
+    rgba(56, 31, 72, 0.25)
+  );
+}
+```
 
 
 
