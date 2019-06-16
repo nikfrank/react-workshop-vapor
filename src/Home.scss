@@ -1,7 +1,102 @@
 .Home {
-  height: 100vh;
   padding-top: 80px;
 
   background-color: black;
   color: white;
+  text-align: center;
+
+  .screen {
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    .neon {
+      font-weight: 800;
+      font-size: 2rem;
+      animation: neon 1.5s ease-in-out infinite alternate;
+    }
+
+    .landing-blurb {
+      position: absolute;
+      top: 15%;
+      left: 20%;
+      width: 60%;
+    }
+
+    .p-container {
+      padding: 5px;
+      border-radius: 5px;
+      background-color: #fff6;
+      color: black;
+
+      font-size: 1.25rem;
+      font-weight: bold;
+
+      a {
+        color: #dff;
+
+        &:hover {
+          color: #7ff;
+          animation: neon 1.5s ease-in-out infinite alternate;
+        }
+      }
+    }
+
+
+    .vape-img-container {
+      position: absolute;
+      bottom: 15%;
+      right: 10%;
+      left: 10%;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      img {
+        max-height: 20vh;
+      }
+    }
+
+    .dave-chappelle {
+      position: absolute;
+      left: -5%;
+      bottom: 0;
+    }
+
+    .dave-blurb {
+      position: absolute;
+      right: 10%;
+      top: 30%;
+      max-width: 400px;
+      text-shadow: 0 0 5px #5dd;
+    }
+
+  }
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 10px #0ff,
+                 0 0 20px #0ff,
+                 0 0 30px #0ff,
+                 0 0 40px #228DFF,
+                 0 0 70px #228DFF,
+                 0 0 80px #228DFF,
+                 0 0 100px #228DFF,
+                 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #5dd,
+                 0 0 10px #5dd,
+                 0 0 15px #5dd,
+                 0 0 20px #228DFF,
+                 0 0 35px #228DFF,
+                 0 0 40px #228DFF,
+                 0 0 50px #228DFF,
+                 0 0 75px #228DFF;
+  }
 }

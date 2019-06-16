@@ -337,6 +337,284 @@ footer {
 
 
 
+## Page Content
 
+Let's put some images and marketing content in our page so people will want to come to our lounge
+
+
+### big parallax animated pixelwave images
+
+We should have three screen-heights worth of content - with big background images, which we'll float styled text blocks on top of.
+
+
+<sub>./src/Home.js</sub>
+```js
+import React from 'react';
+import './Home.scss';
+
+const firstBg = 'http://geekyfreaky.com/wp-content/uploads/2018/01/vrXXOJ.gif';
+const secondBg = 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cf2836cb-5893-4a6c-b156-5a89d94fc721/dce61tw-3cfde162-fb53-4b5a-96cd-ae1df756df65.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2NmMjgzNmNiLTU4OTMtNGE2Yy1iMTU2LTVhODlkOTRmYzcyMVwvZGNlNjF0dy0zY2ZkZTE2Mi1mYjUzLTRiNWEtOTZjZC1hZTFkZjc1NmRmNjUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.vEwtplf1FBeP01zGIPa3zIMEz7mUudddreie2iCbe9Q';
+const thirdBg = 'https://archive-media-0.nyafuu.org/wg/image/1506/42/1506423646403.gif';
+
+const Home = ()=> (
+  <div className='Home'>
+    <div className='screen'
+         style={{ backgroundImage: `url("${firstBg}")`}}>
+    </div>
+    <div className='screen'
+         style={{ backgroundImage: `url("${secondBg}")`}}>
+    </div>
+    <div className='screen'
+         style={{ backgroundImage: `url("${thirdBg}")`}}>
+    </div>
+  </div>
+);
+
+export default Home;
+```
+
+<sub>./src/Hom.scss</sub>
+```scss
+.Home {
+  padding-top: 80px;
+
+  background-color: black;
+  color: white;
+
+  .screen {
+    height: 100vh;
+    background-color: black;
+    background-repeat: no-repeat;
+  }
+}
+```
+
+#### neon headers
+
+our vapor lounge has a neon-noir theme, which we should keep going with our header texts
+
+
+first, let's make some header texts!
+
+<sub>./src/Home.js</sub>
+```js
+//...
+import { Link } from 'react-router-dom';
+
+const Home = ()=> (
+  <div className='Home'>
+    <div className='screen'
+         style={{ backgroundImage: `url("${firstBg}")`}}>
+      <div className='landing-blurb'>
+        <h1 className='neon'>This is a lounge where you can vape...</h1>
+        <div className='p-container'>
+          <p>we have all the best vapes and stuff</p>
+          <p>we have all the best flavours</p>
+          <p>for cool people who hate smoking</p>
+          <p><Link to='/menu'>Check out our Menu</Link></p>
+        </div>
+      </div>
+    </div>
+  //...
+  
+```
+
+so now we can style them
+
+<sub>./src/Home.scss</sub>
+```scss
+.Home {
+  padding-top: 80px;
+
+  background-color: black;
+  color: white;
+
+  .screen {
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    .neon {
+      font-weight: 800;
+      font-size: 2rem;
+      animation: neon 1.5s ease-in-out infinite alternate;
+    }
+
+    //... this is where to put the .landing-blurb rule next
+
+  }
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 10px #0ff,
+                 0 0 20px #0ff,
+                 0 0 30px #0ff,
+                 0 0 40px #228DFF,
+                 0 0 70px #228DFF,
+                 0 0 80px #228DFF,
+                 0 0 100px #228DFF,
+                 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #5dd,
+                 0 0 10px #5dd,
+                 0 0 15px #5dd,
+                 0 0 20px #228DFF,
+                 0 0 35px #228DFF,
+                 0 0 40px #228DFF,
+                 0 0 50px #228DFF,
+                 0 0 75px #228DFF;
+  }
+}
+```
+
+
+
+#### floating text blocks
+
+now that we have our backgrounds, our text blocks could use a translucent background to make reading them easier
+
+
+let's put our `.landing-blurb` into the middle of the `.screen`, nesting the rule to avoid any collisions, incase we name something `.landing-blurb` on another page
+
+<sub>./src/Home.scss</sub>
+```scss
+//...
+
+    .landing-blurb {
+      position: absolute;
+      top: 15%;
+      left: 20%;
+      width: 60%;
+      text-align: center;
+    }
+    
+    //... this is where to put the p-container rule next
+```
+
+so now we can put a translucency on the `.p-container`
+
+```scss
+
+      .p-container {
+        padding: 5px;
+        border-radius: 5px;
+        background-color: #fff3;
+
+        font-size: 1.25rem;
+        font-weight: bold;
+
+        //...
+```
+
+and of course, we want our `<Link/>` to glow when we `:hover` it
+
+```scss
+        a {
+          color: #dff;
+
+          &:hover {
+            color: #7ff;
+            animation: neon 1.5s ease-in-out infinite alternate;
+          }
+        }
+      }
+    }
+```
+
+to finish off the landing page, let's add some vapes to the bottom row
+
+<sub>./src/Home.js</sub>
+```html
+    <div className='screen'
+         style={{ backgroundImage: `url("${firstBg}")`}}>
+      <div className='landing-blurb'>
+        <h1 className='neon'>This is a lounge where you can vape...</h1>
+        <div className='p-container'>
+          <p>we have all the best vapes and stuff</p>
+          <p>we have all the best flavours</p>
+          <p>for cool people who hate smoking</p>
+          <p><Link to='/menu'>Check out our Menu</Link></p>
+        </div>
+      </div>
+      <div className='vape-img-container'>
+        <img src='https://vaping.com/media/catalog/product/cache/1/small_image/236x297/7adae98f10b65a46c99555dc2b8a9bb0/f/r/freemax-twister-kit.png'/>
+        <img src='https://cdn11.bigcommerce.com/s-u5dfog9d/images/stencil/500x659/products/109/314/ego_battery__22630.1417747544.png?c=2'/>
+        <img src='https://vaping.com/media/catalog/product/cache/1/small_image/236x297/7adae98f10b65a46c99555dc2b8a9bb0/f/r/freemax-twister-kit.png'/>
+      </div>
+    </div>
+
+```
+
+and style the `.vape-img-container` with `flex-direction: row; justify-content: space-around;`
+
+nested inside our `.screen` rule
+
+<sub>./src/Home.scss</sub>
+```scss
+    .vape-img-container {
+      position: absolute;
+      bottom: 15%;
+      right: 10%;
+      left: 10%;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      img {
+        max-height: 20vh;
+      }
+    }
+```
+
+
+### celebrity endorsements
+
+let's pretend our vape lounge is endorsed by Dave Chappelle
+
+if he sues us, that's probably good press anyhow
+
+<sub>./src/Home.js</sub>
+```html
+    <div className='screen'
+         style={{ backgroundImage: `url("${secondBg}")`}}>
+      <img src='https://i.imgur.com/vbbTxB0.png' className='dave-chappelle'/>
+      <div className='dave-blurb'>
+        <h1 className='neon'>Vape with all the celebs...</h1>
+        <div className='p-container'>
+          <p>I can't figure out why these crackers are still smoking cigarettes at dive bars</p>
+          <p>... do they want to look stupid? ... that's why I vape here</p>
+          <p>- Dave Chappelle</p>
+        </div>
+      </div>
+    </div>
+
+```
+
+<sub>./src/Home.scss</sub>
+```scss
+  //... nested inside .screen
+
+    .dave-chappelle {
+      position: absolute;
+      left: -5%;
+      bottom: 0;
+    }
+
+    .dave-blurb {
+      position: absolute;
+      right: 10%;
+      top: 30%;
+      max-width: 400px;
+      text-shadow: 0 0 5px #5dd;
+    }
+
+//...
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
