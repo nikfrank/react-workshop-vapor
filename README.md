@@ -269,6 +269,7 @@ and make them sit side-by-side over on the right side of the bar
 .Navbar {
   position: fixed;
   top: 0;
+  z-index: 10;
   
   width: 100%;
   min-height: 80px;
@@ -530,6 +531,12 @@ to finish off the landing page, let's add some vapes to the bottom row
 
 <sub>./src/Home.js</sub>
 ```html
+//...
+const firstVapes = 'https://vaping.com/media/catalog/product/cache/1/small_image/236x297/7adae98f10b65a46c99555dc2b8a9bb0/f/r/freemax-twister-kit.png';
+const secondVapes = 'https://cdn11.bigcommerce.com/s-u5dfog9d/images/stencil/500x659/products/109/314/ego_battery__22630.1417747544.png?c=2';
+
+//...
+
     <div className='screen'
          style={{ backgroundImage: `url("${firstBg}")`}}>
       <div className='landing-blurb'>
@@ -542,9 +549,9 @@ to finish off the landing page, let's add some vapes to the bottom row
         </div>
       </div>
       <div className='vape-img-container'>
-        <img src='https://vaping.com/media/catalog/product/cache/1/small_image/236x297/7adae98f10b65a46c99555dc2b8a9bb0/f/r/freemax-twister-kit.png'/>
-        <img src='https://cdn11.bigcommerce.com/s-u5dfog9d/images/stencil/500x659/products/109/314/ego_battery__22630.1417747544.png?c=2'/>
-        <img src='https://vaping.com/media/catalog/product/cache/1/small_image/236x297/7adae98f10b65a46c99555dc2b8a9bb0/f/r/freemax-twister-kit.png'/>
+        <img alt='' src={firstVapes}/>
+        <img alt='' src={secondVapes}/>
+        <img alt='' src={firstVapes}/>
       </div>
     </div>
 
@@ -573,11 +580,11 @@ nested inside our `.screen` rule
 ```
 
 
-### celebrity endorsements
+#### celebrity endorsements
 
 let's pretend our vape lounge is endorsed by Dave Chappelle
 
-if he sues us, that's probably good press anyhow
+he's a known vape enthusiast and if he sues us, that's probably good press anyhow
 
 <sub>./src/Home.js</sub>
 ```html
@@ -602,7 +609,7 @@ if he sues us, that's probably good press anyhow
 
     .dave-chappelle {
       position: absolute;
-      left: -5%;
+      right: 40%;
       bottom: 0;
     }
 
@@ -616,5 +623,19 @@ if he sues us, that's probably good press anyhow
 
 //...
 ```
+
+
+#### call to action to the order page
+
+we really want our users to navigate over to the order page - that's where we can take their money!
+
+let's sell them the idea with some web 3.0 compliant looking sales material, and finish off with another glowing `<Link/>`
+
+
+
+
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
