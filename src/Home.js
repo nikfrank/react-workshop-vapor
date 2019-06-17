@@ -21,14 +21,14 @@ const Home = ()=> (
         </div>
       </div>
       <div className='vape-img-container'>
-        <img src='https://vaping.com/media/catalog/product/cache/1/small_image/236x297/7adae98f10b65a46c99555dc2b8a9bb0/f/r/freemax-twister-kit.png'/>
-        <img src='https://cdn11.bigcommerce.com/s-u5dfog9d/images/stencil/500x659/products/109/314/ego_battery__22630.1417747544.png?c=2'/>
-        <img src='https://vaping.com/media/catalog/product/cache/1/small_image/236x297/7adae98f10b65a46c99555dc2b8a9bb0/f/r/freemax-twister-kit.png'/>
+        <img alt='' src='https://vaping.com/media/catalog/product/cache/1/small_image/236x297/7adae98f10b65a46c99555dc2b8a9bb0/f/r/freemax-twister-kit.png'/>
+        <img alt='' src='https://cdn11.bigcommerce.com/s-u5dfog9d/images/stencil/500x659/products/109/314/ego_battery__22630.1417747544.png?c=2'/>
+        <img alt='' src='https://vaping.com/media/catalog/product/cache/1/small_image/236x297/7adae98f10b65a46c99555dc2b8a9bb0/f/r/freemax-twister-kit.png'/>
       </div>
     </div>
     <div className='screen'
          style={{ backgroundImage: `url("${secondBg}")`}}>
-      <img src='https://i.imgur.com/vbbTxB0.png' className='dave-chappelle'/>
+      <img alt='' src='https://i.imgur.com/vbbTxB0.png' className='dave-chappelle'/>
       <div className='dave-blurb'>
         <h1 className='neon'>Vape with all the celebs...</h1>
         <div className='p-container'>
