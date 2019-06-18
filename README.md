@@ -632,10 +632,143 @@ we really want our users to navigate over to the order page - that's where we ca
 let's sell them the idea with some web 3.0 compliant looking sales material, and finish off with another glowing `<Link/>`
 
 
+unnest the `a` rule
 
 
+```scss
+    .gear-container img {
+      position: absolute;
+
+      &:nth-child(1) {
+        left: 4%;
+        top: 0;
+      }
+      
+      &:nth-child(2) {
+        left: 30vw;
+        top: 0;
+      }
+      
+      &:nth-child(3) {
+        left: 4%;
+        top: 30%;
+      }
+      
+      &:nth-child(4) {
+        left: 4%;
+        bottom: 0;
+      }
+    }
+
+    .order-action {
+      position: absolute;
+      right: 5%;
+      top: 30%;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      padding: 9px;
+      border-radius: 5px;
+      background-color: #fffe;
+      color: black;
+
+      font-size: 1.25rem;
+      font-weight: bold;      
+    }
+
+```
 
 
+```html
+
+    <div className='screen'
+         style={{ backgroundImage: `url("${thirdBg}")`}}>
+      <div className='gear-container'>
+        <img alt='' src={firstGear}/>
+        <img alt='' src={secondGear}/>
+        <img alt='' src={thirdGear}/>
+        <img alt='' src={fourthGear}/>
+      </div>
+      
+      <div className='order-action'>
+        <h2>All the best gear</h2>
+        <p>Available online one click away</p>
+        <Link to='/order'>Order Now</Link>
+      </div>
+    </div>
+```
+
+#### footer
+
+`$ mkdir src/imgs`
+
+--> we can download facebook.svg, insta.svg from the open web somewhere
+
+```scss
+footer {
+  height: 180px;
+  background-color: black;
+  background-image: linear-gradient(
+    to top,
+    rgba(156, 21, 219, 0.75),
+    rgba(56, 31, 72, 0.25)
+  );
+
+  display: flex;
+  flex-direction: row;
+
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  
+  p {
+    color: white;
+    font-size: 1.25rem;
+  }
+
+
+  ul {
+    list-style: none;
+    padding: none;
+  }
+
+  a {
+    color: white;
+  }
+
+  img {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+```
+
+
+```js
+//...
+
+import fbLogo from './imgs/facebook.svg';
+import instaLogo from './imgs/insta.svg';
+
+
+//...
+
+      <footer>
+        <p>&copy; 2019 CAPSLOK HI TECH </p>
+        <img alt='' src={fbLogo}/>
+        <img alt='' src={instaLogo}/>
+        <ul>
+          <li><a href='emailto:nikbfrank+spam@gmail.com'>Email Us</a></li>
+          <li><a href='/home'>Home Page</a></li>
+          <li><a href='/menu'>Menu Page</a></li>
+          <li><a href='/order'>Order Page</a></li>
+        </ul>
+      </footer>
+
+```
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

@@ -13,6 +13,17 @@
     background-size: cover;
     position: relative;
 
+    a {
+      color: #266;
+      font-size: 1.25rem;
+
+      &:hover {
+        color: #7ff;
+        animation: neon 1.5s ease-in-out infinite alternate;
+      }
+    }
+
+    
     .neon {
       font-weight: 800;
       font-size: 2rem;
@@ -27,22 +38,13 @@
     }
 
     .p-container {
-      padding: 5px;
+      padding: 9px;
       border-radius: 5px;
-      background-color: #fff6;
+      background-color: #fffe;
       color: black;
 
       font-size: 1.25rem;
       font-weight: bold;
-
-      a {
-        color: #dff;
-
-        &:hover {
-          color: #7ff;
-          animation: neon 1.5s ease-in-out infinite alternate;
-        }
-      }
     }
 
 
@@ -76,6 +78,48 @@
       text-shadow: 0 0 5px #5dd;
     }
 
+
+    .gear-container img {
+      position: absolute;
+
+      &:nth-child(1) {
+        left: 4%;
+        top: 0;
+      }
+      
+      &:nth-child(2) {
+        left: 30vw;
+        top: 0;
+      }
+      
+      &:nth-child(3) {
+        left: 4%;
+        top: 30%;
+      }
+      
+      &:nth-child(4) {
+        left: 4%;
+        bottom: 0;
+      }
+    }
+
+    .order-action {
+      position: absolute;
+      right: 5%;
+      top: 30%;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      padding: 9px;
+      border-radius: 5px;
+      background-color: #fffe;
+      color: black;
+
+      font-size: 1.25rem;
+      font-weight: bold;      
+    }
   }
 }
 

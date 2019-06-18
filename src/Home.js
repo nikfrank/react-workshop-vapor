@@ -49,16 +49,17 @@ const Home = ()=> (
     </div>
     <div className='screen'
          style={{ backgroundImage: `url("${thirdBg}")`}}>
-      <div className='order-title'>
-        <h2>All the best gear</h2>
+      <div className='gear-container'>
+        <img alt='' src={firstGear}/>
+        <img alt='' src={secondGear}/>
+        <img alt='' src={thirdGear}/>
+        <img alt='' src={fourthGear}/>
       </div>
-      <img alt='' src={firstGear}/>
-      <img alt='' src={secondGear}/>
-      <img alt='' src={thirdGear}/>
-      <img alt='' src={fourthGear}/>
+      
       <div className='order-action'>
+        <h2>All the best gear</h2>
         <p>Available online one click away</p>
-        <Link to='/order' />
+        <Link to='/order'>Order Now</Link>
       </div>
     </div>
   </div>
