@@ -10,6 +10,9 @@
 
   color: white;
 
+  display: flex;
+  flex-direction: row;
+
   .menu-page {
     height: 56vh;
     width: 300px;
@@ -23,6 +26,11 @@
 
     border-radius: 8px;
 
+    .menu-section {
+      margin-top: 40px;
+      padding-left: 5px;
+    }
+    
     .menu-item {
       width: calc( 100% - 30px );
       display: flex;
@@ -31,6 +39,9 @@
       margin-top: 20px;
       padding: 0 15px;
       font-size: 1.125rem;
+
+      color: white;
+      text-shadow: 0 0 5px #d5pd, 0 0 10px #5dd, 0 0 15px #5dd;
 
       & span:nth-child(2) {
         flex-grow: 1;

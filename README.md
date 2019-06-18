@@ -905,7 +905,7 @@ class Menu extends Component {
 //...
 ```
 
-put a dotted line connecting the item and their price
+put a dotted line connecting the item and their price, and add a glow to the text
 
 ```html
             <div key={item.name} className='menu-item'>
@@ -926,6 +926,9 @@ put a dotted line connecting the item and their price
       padding: 0 15px;
       font-size: 1.125rem;
 
+      color: white;
+      text-shadow: 0 0 5px #d5d, 0 0 10px #5dd, 0 0 15px #5dd;
+
       & span:nth-child(2) {
         flex-grow: 1;
         border-bottom: 1px dotted white;
@@ -933,15 +936,175 @@ put a dotted line connecting the item and their price
     }
 ```
 
-and add another page to the menu
 
-```html
+let's section the menu by category
 
+```js
+//...
+
+class Menu extends Component {
+
+  state = {
+    menuSections: [
+      {
+        title: 'Classic Flavors',
+        menuItems: [
+          { name: 'Pineapple Express', price: 13 },
+          { name: 'Purple Haze', price: 15 },
+          { name: 'Strawberry Fields', price: 11 },
+        ],
+      },
+
+      {
+        title: 'Hometown Favorites',
+        menuItems: [
+          { name: 'Flying Cherry', price: 19 },
+          { name: 'Crazy Horse', price: 17 },
+          { name: 'Snoop in da House', price: 21 },
+        ],
+      },
+    ],
+  }
+  
+  render(){
+    const { menuSections } = this.state;
+    
+    return (
+      <div className='Menu'>
+        <div className='menu-page'>
+          {menuSections.map((section)=> (
+            <div key={section.title} className='menu-section'>
+              <h2>{section.title}</h2>
+              {section.menuItems.map((item)=> (
+                <div key={item.name} className='menu-item'>
+                  <span>{item.name}</span>
+                  <span/>
+                  <span>${item.price}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+//...
 ```
 
 ```scss
+    //... inside .menu-page
 
+    .menu-section {
+      margin-top: 40px;
+      padding-left: 5px;
+    }
 ```
+
+
+and add another page to the menu
+
+```html
+//...
+
+class Menu extends Component {
+
+  state = {
+    menuPages: [
+      {
+        menuSections: [
+          {
+            title: 'Classic Flavors',
+            menuItems: [
+              { name: 'Pineapple Express', price: 13 },
+              { name: 'Purple Haze', price: 15 },
+              { name: 'Strawberry Fields', price: 11 },
+            ],
+          },
+
+          {
+            title: 'Hometown Favorites',
+            menuItems: [
+              { name: 'OG Clouds', price: 19 },
+              { name: 'Crazy Horse', price: 17 },
+              { name: 'Darth Vader', price: 21 },
+            ],
+          },
+        ],
+      },
+      
+      {
+        menuSections: [
+          {
+            title: 'Seasonal',
+            menuItems: [
+              { name: 'Blueberry Blast', price: 22 },
+              { name: 'Rhubarb Pie', price: 22 },
+              { name: 'Flying Cherry', price: 19 },
+            ],
+          },
+
+          {
+            title: 'Deluxe',
+            menuItems: [
+              { name: 'Skywalker', price: 33 },
+              { name: 'Canadian Breakfast', price: 42 },
+              { name: 'Snoop in da House', price: 21 },
+            ],
+          },
+        ],
+      },
+    ],
+  }
+  
+  render(){
+    const { menuPages } = this.state;
+    
+    return (
+      <div className='Menu'>
+        {menuPages.map((page, index)=> (
+          <div className='menu-page' key={index}>
+            {page.menuSections.map((section)=> (
+              <div key={section.title} className='menu-section'>
+                <h2>{section.title}</h2>
+                {section.menuItems.map((item)=> (
+                  <div key={item.name} className='menu-item'>
+                    <span>{item.name}</span>
+                    <span/>
+                    <span>${item.price}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  }
+}
+
+//...
+```
+
+```scss
+//... on .Menu
+
+
+  display: flex;
+  flex-direction: row;
+
+//...
+```
+
+wow... tthat JSON got nested pretty deep pretty quick eh?
+
+ca va. Let's make our translation feature
+
+
+### Translating the menu
+
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
