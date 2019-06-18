@@ -770,5 +770,101 @@ import instaLogo from './imgs/insta.svg';
 
 ```
 
+---
+
+
+### Menu, with language selection
+
+Our customers come from all over the world, and speak at least three different languages, some go rtl (right-to-left) and some ltr (left-to-right)
+
+So when we make our menu, we need to make a `<select/>` for language, and load our menu item strings from a JSON based on the `language` set to the `state`
+
+
+first, let's render up the menu, so then we can refactor the values from the JSX into the JSON
+
+
+#### rendering a menu
+
+Let's start by rendering one page of the menu with one item on it
+
+<sub>./src/Menu.js</sub>
+```html
+import React, { Component } from 'react';
+import './Menu.scss';
+
+class Menu extends Component {
+  render(){
+    return (
+      <div className='Menu'>
+        <div className='menu-page'>
+          <div className='menu-item'>
+            <span>Pineapple Express</span>
+            <span>$13</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+};
+
+export default Menu;
+```
+
+
+and styling everything to fit on the page
+
+<sub>./src/Menu.scss</sub>
+```scss
+.Menu {
+  padding-top: 80px;
+  
+  height: calc( 100vh - 260px );
+  width: 100%;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  color: white;
+
+  //...
+}
+
+```
+
+styling the page to have a glowing border
+
+```scss
+  .menu-page {
+    height: 56vh;
+    width: 300px;
+    margin: 10vh auto;
+
+    box-shadow:
+      0 0 20px 10px #fff,  /* inner white */
+      0 0 33px 20px #f0f, /* middle magenta */
+      0 0 46px 30px #0ff; /* outer cyan */
+
+    border-radius: 8px;
+
+    //...
+  }
+
+```
+
+and the menu items to appear spaced out on their row
+
+```scss
+    .menu-item {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      margin-top: 5px;
+    }
+```
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
