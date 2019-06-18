@@ -805,7 +805,7 @@ class Menu extends Component {
       </div>
     );
   }
-};
+}
 
 export default Menu;
 ```
@@ -839,6 +839,7 @@ styling the page to have a glowing border
     height: 56vh;
     width: 300px;
     margin: 10vh auto;
+    padding-top: 10px;
 
     box-shadow:
       0 0 20px 10px #fff,  /* inner white */
@@ -856,15 +857,91 @@ and the menu items to appear spaced out on their row
 
 ```scss
     .menu-item {
-      width: 100%;
+      width: calc( 100% - 30px );
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
 
       margin-top: 5px;
+      padding: 0 15px;
+    }
+  }
+}
+```
+
+let's add a few more menu items by refactoring them into the `state`
+
+```js
+//...
+
+class Menu extends Component {
+
+  state = {
+    menuItems: [
+      { name: 'Pineapple Express', price: 13 },
+      { name: 'Purple Haze', price: 15 },
+      { name: 'Strawberry Fields', price: 11 },
+    ],
+  }
+  
+  render(){
+    const { menuItems } = this.state;
+    
+    return (
+      <div className='Menu'>
+        <div className='menu-page'>
+          {menuItems.map((item)=> (
+            <div key={item.name} className='menu-item'>
+              <span>{item.name}</span>
+              <span>${item.price}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+//...
+```
+
+put a dotted line connecting the item and their price
+
+```html
+            <div key={item.name} className='menu-item'>
+              <span>{item.name}</span>
+              <span/>
+              <span>{item.currency}{item.price}</span>
+            </div>
+
+```
+
+```scss
+    .menu-item {
+      width: calc( 100% - 30px );
+      display: flex;
+      flex-direction: row;
+
+      margin-top: 20px;
+      padding: 0 15px;
+      font-size: 1.125rem;
+
+      & span:nth-child(2) {
+        flex-grow: 1;
+        border-bottom: 1px dotted white;
+      }
     }
 ```
 
+and add another page to the menu
+
+```html
+
+```
+
+```scss
+
+```
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
