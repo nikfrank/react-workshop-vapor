@@ -1102,7 +1102,40 @@ wow... tthat JSON got nested pretty deep pretty quick eh?
 ca va. Let's make our translation feature
 
 
+
 ### Translating the menu
+
+Now that all of the `name`s are rendering out of javascript values (`state` to be precise), we can decide with our program to render different text if we wanted.
+
+So, we'll need to add more strings to our menu, for each of the languages we're interested in rendering. In stead of just having a `name` field, each item will now need `names` which is an object with values for every language
+
+let's see what that might look like for one item
+
+```js
+{
+  names: {
+    en: 'Canadian Breakfast',
+    fr: 'petit déjeuner canadien',
+    he: 'ארוחת בוקר קנדי',
+  }
+}
+```
+
+then when we want to read one of those out - where we had before
+
+```js
+{menuItem.name}
+```
+
+we'll need to do something like
+
+```js
+{menuItem.names[ language ]}
+```
+
+and of course, we'll need to keep track of the language somewhere (in `state` of course!)
+
+
 
 
 
