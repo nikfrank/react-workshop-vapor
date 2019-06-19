@@ -1107,13 +1107,13 @@ ca va. Let's make our translation feature
 
 Now that all of the `name`s are rendering out of javascript values (`state` to be precise), we can decide with our program to render different text if we wanted.
 
-So, we'll need to add more strings to our menu, for each of the languages we're interested in rendering. In stead of just having a `name` field, each item will now need `names` which is an object with values for every language
+So, we'll need to add more strings to our menu, for each of the languages we're interested in rendering. In stead of just having a `name` field, each item will now need `name`s which is an object with values for every language
 
 let's see what that might look like for one item
 
 ```js
 {
-  names: {
+  name: {
     en: 'Canadian Breakfast',
     fr: 'petit déjeuner canadien',
     he: 'ארוחת בוקר קנדי',
@@ -1130,14 +1130,119 @@ then when we want to read one of those out - where we had before
 we'll need to do something like
 
 ```js
-{menuItem.names[ language ]}
+{menuItem.name[ language ]}
 ```
 
 and of course, we'll need to keep track of the language somewhere (in `state` of course!)
 
+and - don't remember - the titles will need translations as well!
 
 
+#### translations
 
+for fun or profit, you may choose different names (or a different theme of products entirely) for your menu
+
+so be it, here is my internationalized menu JSON
+
+```js
+    menuPages: [
+      {
+        menuSections: [
+          {
+            title: { en: 'Classic Flavors', fr: 'Saveurs Classiques' },
+            menuItems: [
+              { name: { en: 'Pineapple Express', fr: 'Ananas Express' }, price: 13 },
+              { name: { en: 'Purple Haze', fr: 'Brume Pourpre' }, price: 15 },
+              { name: { en: 'Strawberry Fields', fr: 'Champs de Fraises' }, price: 11 },
+            ],
+          },
+
+          {
+            title: { en: 'Hometown Favorites', fr: 'Favoris Ville Natale' },
+            menuItems: [
+              { name: { en: 'OG Clouds', fr: 'Nuages OG' }, price: 19 },
+              { name: { en: 'Crazy Horse', fr: 'Cheval Fou' }, price: 17 },
+              { name: { en: 'Darth Vader', fr: 'Dark Vador' }, price: 21 },
+            ],
+          },
+        ],
+      },
+      
+      {
+        menuSections: [
+          {
+            title: { en: 'Seasonal', fr: 'Saisonnière' },
+            menuItems: [
+              { name: { en: 'Blueberry Blast', fr: 'Explosion de Myrtille' }, price: 22 },
+              { name: { en: 'Rhubarb Pie', fr: 'Tarte à la Rhubarbe' }, price: 22 },
+              { name: { en: 'Flying Cherry', fr: 'Cerise Volante' }, price: 19 },
+            ],
+          },
+
+          {
+            title: { en: 'Deluxe', fr: 'De Luxe' },
+            menuItems: [
+              { name: { en: 'Skywalker', fr: 'Ciel Marcheur' }, price: 33 },
+              { name: { en: 'Canadian Breakfast', fr: 'Petit Déjeuner Canadien' }, price: 42 },
+              { name: { en: 'Snoop in da House', fr: 'Snoop dans la Maison' }, price: 21 },
+            ],
+          },
+        ],
+      },
+    ],
+```
+
+
+#### rendering from the translations
+
+we should set a `lang` in our `state`
+
+```js
+//...
+
+state = {
+  lang: 'en',
+  //...
+}
+
+//...
+```
+
+
+so now we can read out the `lang` from `state` in `render` and use it to dereference the correct value into the text node
+
+```js
+  render(){
+    const { menuPages, lang } = this.state;
+    
+    return (
+      <div className='Menu'>
+        {menuPages.map((page, index)=> (
+          <div className='menu-page' key={index}>
+            {page.menuSections.map((section)=> (
+              <div key={section.title[lang]} className='menu-section'>
+                <h2>{section.title[lang]}</h2>
+                {section.menuItems.map((item)=> (
+                  <div key={item.name[lang]} className='menu-item'>
+                    <span>{item.name[lang]}</span>
+                    <span/>
+                    <span>${item.price}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+```
+
+
+#### language <select/>
+
+...
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
